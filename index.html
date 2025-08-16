@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>ca-pub-9152598639236343"
+<head>
   <meta charset="UTF-8">
   <title>AI Chat (Hindi + English)</title>
+
+  <!-- ✅ AdSense script in head -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9152598639236343"
+     crossorigin="anonymous"></script>
+
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
     h1 { text-align: center; }
@@ -14,20 +19,34 @@
 <body>
 
 <div class="container">
-  <h1>?? AI ??? (Chat)</h1>
+  <h1>🤖 AI चैट (Chat)</h1>
 
-  <label for="language">???? ????? / Choose Language:</label>
+  <!-- ✅ AdSense ad block (can be placed at top, middle or bottom) -->
+  <div style="margin: 20px 0;">
+    <!-- Home page -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9152598639236343"
+         data-ad-slot="6088773260"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <label for="language">भाषा चुनें / Choose Language:</label>
   <select id="language">
     <option value="en">English</option>
-    <option value="hi">?????</option>
+    <option value="hi">हिन्दी</option>
   </select>
 
-  <label for="userInput">???? ???? / Your Question:</label>
+  <label for="userInput">अपना प्रश्न लिखें / Your Question:</label>
   <textarea id="userInput" rows="3" placeholder="Type your question here..."></textarea>
 
-  <button onclick="getAIResponse()">???? ??? / Get Answer</button>
+  <button onclick="getAIResponse()">उत्तर पाएँ / Get Answer</button>
 
-  <div class="output" id="output">AI ???? ???? ?????? / AI response will appear here.</div>
+  <div class="output" id="output">AI उत्तर यहाँ दिखाई देगा / AI response will appear here.</div>
 </div>
 
 <script>
@@ -37,14 +56,14 @@
     const output = document.getElementById('output');
 
     if (!input.trim()) {
-      output.innerText = lang === 'hi' ? '????? ?? ???? ???? ?????' : 'Please enter a question.';
+      output.innerText = lang === 'hi' ? 'कृपया कोई प्रश्न लिखें।' : 'Please enter a question.';
       return;
     }
 
-    output.innerText = lang === 'hi' ? '????? ????????? ????...' : 'Please wait...';
+    output.innerText = lang === 'hi' ? 'कृपया प्रतीक्षा करें...' : 'Please wait...';
 
     const promptText = lang === 'hi'
-      ? `????: ${input}\n????? ????? ??? ???:`
+      ? `प्रश्न: ${input}\nउत्तर हिंदी में दीजिए:`
       : `Question: ${input}\nAnswer in English:`;
 
     try {
@@ -52,7 +71,7 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer YOUR_API_KEY_HERE" // <-- ???? API Key ???? ?????
+          "Authorization": "Bearer YOUR_API_KEY_HERE" // <-- अपनी API Key यहाँ लगाएं
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -62,12 +81,12 @@
       });
 
       const data = await response.json();
-      const aiReply = data.choices?.[0]?.message?.content || "??? ???? ???? ?????";
+      const aiReply = data.choices?.[0]?.message?.content || "उत्तर प्राप्त नहीं हो सका।";
 
       output.innerText = aiReply.trim();
     } catch (error) {
       console.error(error);
-      output.innerText = lang === 'hi' ? '??? ??? ?? ????' : 'Something went wrong.';
+      output.innerText = lang === 'hi' ? 'कुछ गड़बड़ हो गई है।' : 'Something went wrong.';
     }
   }
 </script>
