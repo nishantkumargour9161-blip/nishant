@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chat (Hindi + English)</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+    h1 { text-align: center; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    textarea, select, button { width: 100%; margin-top: 10px; padding: 10px; }
+    .output { background: #e6e6e6; padding: 10px; min-height: 100px; margin-top: 10px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>?? AI ??? (Chat)</h1>
+
+  <label for="language">???? ????? / Choose Language:</label>
+  <select id="language">
+    <option value="en">English</option>
+    <option value="hi">?????</option>
+  </select>
+
+  <label for="userInput">???? ???? / Your Question:</label>
+  <textarea id="userInput" rows="3" placeholder="Type your question here..."></textarea>
+
+  <button onclick="getAIResponse()">???? ??? / Get Answer</button>
+
+  <div class="output" id="output">AI ???? ???? ?????? / AI response will appear here.</div>
+</div>
+
+<script>
+  async function getAIResponse() {
+    const input = document.getElementById('userInput').value;
+    const lang = document.getElementById('language').value;
+    const output = document.getElementById('output');
+
+    if (!input.trim()) {
+      output.innerText = lang === 'hi' ? '????? ?? ???? ???? ?????' : 'Please enter a question.';
+      return;
+    }
+
+    output.innerText = lang === 'hi' ? '????? ????????? ????...' : 'Please wait...';
+
+    const promptText = lang === 'hi'
+      ? `????: ${input}\n????? ????? ??? ???:`
+      : `Question: ${input}\nAnswer in English:`;
+
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer YOUR_API_KEY_HERE" // <-- ???? API Key ???? ?????
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: promptText }],
+          temperature: 0.7
+        })
+      });
+
+      const data = await response.json();
+      const aiReply = data.choices?.[0]?.message?.content || "??? ???? ???? ?????";
+
+      output.innerText = aiReply.trim();
+    } catch (error) {
+      console.error(error);
+      output.innerText = lang === 'hi' ? '??? ??? ?? ????' : 'Something went wrong.';
+    }
+  }
+</script>
+
+</body>
+</html>
