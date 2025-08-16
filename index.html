@@ -1,10 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>AI Chat (Hindi + English)</title>
 
-  <!-- ✅ AdSense script in head -->
+  <!-- ✅ AdSense verification script (keep in head) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9152598639236343"
      crossorigin="anonymous"></script>
 
@@ -21,9 +24,8 @@
 <div class="container">
   <h1>🤖 AI चैट (Chat)</h1>
 
-  <!-- ✅ AdSense ad block (can be placed at top, middle or bottom) -->
+  <!-- ✅ AdSense ad block -->
   <div style="margin: 20px 0;">
-    <!-- Home page -->
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-9152598639236343"
@@ -63,15 +65,15 @@
     output.innerText = lang === 'hi' ? 'कृपया प्रतीक्षा करें...' : 'Please wait...';
 
     const promptText = lang === 'hi'
-      ? `प्रश्न: ${input}\nउत्तर हिंदी में दीजिए:`
-      : `Question: ${input}\nAnswer in English:`;
+      ? प्रश्न: ${input}\nउत्तर हिंदी में दीजिए:
+      : Question: ${input}\nAnswer in English:;
 
     try {
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer YOUR_API_KEY_HERE" // <-- अपनी API Key यहाँ लगाएं
+          "Authorization": "Bearer YOUR_API_KEY_HERE" <!-- apni OpenAI API key yaha dalni hai -->
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -93,4 +95,3 @@
 
 </body>
 </html>
-
