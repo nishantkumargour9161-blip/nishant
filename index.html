@@ -1,97 +1,76 @@
+<html lang="en-US">
 
-
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Chat (Hindi + English)</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Free Coming Soon & Maintenance Mode plugin for WordPress">
+    <title></title>
+    <link rel="shortcut icon" href="https://www.nishant.in/wp-content/uploads/2022/03/n-logo.png" />
+    <link rel="profile" href="https://gmpg.org/xfn/11">
 
-  <!-- ✅ AdSense verification script (keep in head) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9152598639236343"
+    <link rel="stylesheet" type="text/css" href="https://www.nishant.in/wp-content/plugins/minimal-coming-soon-maintenance-mode/framework/public/css/public.css" />
+    <script src="https://www.nishant.in/wp-content/plugins/minimal-coming-soon-maintenance-mode/framework/admin/js/webfont.js"></script>    
+    
+    <!-- ✅ AdSense Verification Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9152598639236343"
      crossorigin="anonymous"></script>
 
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
-    h1 { text-align: center; }
-    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-    textarea, select, button { width: 100%; margin-top: 10px; padding: 10px; }
-    .output { background: #e6e6e6; padding: 10px; min-height: 100px; margin-top: 10px; white-space: pre-wrap; }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <h1>🤖 AI चैट (Chat)</h1>
-
-  <!-- ✅ AdSense ad block -->
-  <div style="margin: 20px 0;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-9152598639236343"
-         data-ad-slot="6088773260"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
     <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
+        WebFont.load({
+            bunny: {
+                families: ['Karla', 'Karla']
+            }
+        });
     </script>
-  </div>
+        
+    <style>
+body{background-image:url("https://assets.comingsoonwp.com/free-backgrounds/luca-micheli-mZ4RmsyCGDg-unsplash.jpg");}
+.header-text{font-family:"Karla", Arial, sans-serif;font-size:28px;color:#FFFFFF;}
+.gdpr_consent, .secondary-text{font-family:"Karla", Arial, sans-serif;font-size:14px;color:#FFFFFF;}
+.anti-spam{font-family:"Karla", Arial, sans-serif;font-size:13px;color:#BBBBBB;}
+.content{padding:30px;border-radius:10px;box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.33); background-color: rgba(0,0,0,0.55); max-width:600px;margin-left:auto;margin-right:auto;text-align:left;}
+.content input{text-align:left;}
+.content input[type="text"]{font-size:13px;color:#FFFFFF;border:1px solid #EEEEEE;}
+.content input[type="text"]:focus{border:1px solid #BBBBBB;}
+.content input[type="submit"]{font-size:12px;color:#FFFFFF;background:#0F0F0F;border:1px solid #0F0F0F;}
+.content input[type="submit"]:hover,.content input[type="submit"]:focus{background:#0A0A0A;border:1px solid #0A0A0A;}
+.signals-alert-success{background:#90C695;color:#FFFFFF;}
+.signals-alert-danger{background:#E08283;color:#FFFFFF;}
+::-webkit-input-placeholder { color: #DEDEDE; }
+::-moz-placeholder { color: #DEDEDE; }
+:-ms-input-placeholder { color: #DEDEDE; }
+:-moz-placeholder { color: #DEDEDE; }
+    </style>
 
-  <label for="language">भाषा चुनें / Choose Language:</label>
-  <select id="language">
-    <option value="en">English</option>
-    <option value="hi">हिन्दी</option>
-  </select>
+</head>
 
-  <label for="userInput">अपना प्रश्न लिखें / Your Question:</label>
-  <textarea id="userInput" rows="3" placeholder="Type your question here..."></textarea>
+<body class="signals-plugin">
+    <div class="maintenance-mode">
+        <div class="s-container">
+            <div class="content">
+                <div class="logo-container">
+                    <img title="Nishant Barde" alt="Nishant Barde" src="https://www.nishant.in/wp-content/uploads/2022/03/nishant-barde.png" class="logo" />
+                </div>
+                <h1 class="header-text">Upgrading to Newer technology!</h1>
+                <p class="secondary-text">Contact on <a href="https://wa.me/+918788834630">WhatsApp</a></p>
+                
+                <!-- ✅ AdSense Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9152598639236343"
+                     data-ad-slot="9449202267"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
 
-  <button onclick="getAIResponse()">उत्तर पाएँ / Get Answer</button>
-
-  <div class="output" id="output">AI उत्तर यहाँ दिखाई देगा / AI response will appear here.</div>
-</div>
-
-<script>
-  async function getAIResponse() {
-    const input = document.getElementById('userInput').value;
-    const lang = document.getElementById('language').value;
-    const output = document.getElementById('output');
-
-    if (!input.trim()) {
-      output.innerText = lang === 'hi' ? 'कृपया कोई प्रश्न लिखें।' : 'Please enter a question.';
-      return;
-    }
-
-    output.innerText = lang === 'hi' ? 'कृपया प्रतीक्षा करें...' : 'Please wait...';
-
-    const promptText = lang === 'hi'
-      ? प्रश्न: ${input}\nउत्तर हिंदी में दीजिए:
-      : Question: ${input}\nAnswer in English:;
-
-    try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer YOUR_API_KEY_HERE" <!-- apni OpenAI API key yaha dalni hai -->
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: promptText }],
-          temperature: 0.7
-        })
-      });
-
-      const data = await response.json();
-      const aiReply = data.choices?.[0]?.message?.content || "उत्तर प्राप्त नहीं हो सका।";
-
-      output.innerText = aiReply.trim();
-    } catch (error) {
-      console.error(error);
-      output.innerText = lang === 'hi' ? 'कुछ गड़बड़ हो गई है।' : 'Something went wrong.';
-    }
-  }
-</script>
-
+            </div><!-- .content -->
+        </div><!-- .s-container -->
+    </div><!-- .maintenance-mode -->
 </body>
+
 </html>
+
